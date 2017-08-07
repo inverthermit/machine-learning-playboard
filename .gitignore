@@ -1,0 +1,5 @@
+# Ignore cache and notebook checkpoints
+**/__pycache_
+**/.ipynb_checkpoints
+
+.DS_Store
