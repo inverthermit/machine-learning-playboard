@@ -59,8 +59,8 @@ SSR =  sum(np.square(y-a-b*x)) # over to you
 
 def iterativeSolution():
     for i in np.arange(10000):
-        a = sum(y-b*x)/len(x)
-        b = sum((y-a)*x)/sum(np.square(x))
+        a = sum(y-b*x)/len(x) # np.mean(y-b*x)
+        b = sum((y-a)*x)/sum(np.square(x)) # ((y-a)*x).sum()/(x**2).sum()
         SSR = sum(np.square(y-a-b*x))
         if i % 500 == 0:
             print('Iteration# ' ,i ,', training error SSR',SSR)
@@ -73,14 +73,15 @@ def iterativeSolution():
 X = np.hstack((np.ones_like(x), x))
 # print(X)
 
-a = np.dot(X, X.T)
-print(a)
-b = np.dot(X.T, y)
-w = np.linalg.solve(a, b)
+w = np.linalg.solve(np.dot(X.T, X), np.dot(X.T, y)) # back to you
 print(w)
 
+a, b = w
+f_test = b*x_test + a
+plt.plot(x_test, f_test, 'b-')
+plt.plot(x, y, 'rx')
 
-
+SSR = sum(np.square(y-a-b*x)) # back to you
 
 
 
