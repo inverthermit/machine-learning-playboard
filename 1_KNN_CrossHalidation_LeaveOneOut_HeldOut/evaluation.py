@@ -110,7 +110,7 @@ for k in [1,2,3,5,9,15,33,77]:
     fprs.append(fpr)
     tprs.append(tpr)
 
-plt.plot(fprs, tprs, 'r*')
+plt.plot(fprs, tprs, 'r-')
 plt.xlabel('FPR')
 plt.ylabel('TPR')
 plt.show()
